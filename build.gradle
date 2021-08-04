@@ -1,0 +1,42 @@
+buildscript {
+    dependencies {
+        classpath 'com.webcohesion.enunciate:enunciate-lombok:2.13.3'
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'com.webcohesion.enunciate' version '2.13.3'
+    id 'java'
+}
+
+group 'by.itman'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compileOnly 'javax.xml.bind:jaxb-api:2.3.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+

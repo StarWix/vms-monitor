@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enunciate
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://enunciate.webcohesion.com/schemas/enunciate-2.13.0.xsd">
+
+    <title>VMS Monitor</title>
+
+    <modules>
+        <xml disabled="true"/>
+        <java-xml-client disabled="true"/>
+        <swagger disabled="false" host="localhost:8080"/>
+        <idl disabled="true" disableWadl="true"/>
+        <gwt-json-overlay disabled="true"/>
+        <php-json-client disabled="true"/>
+        <php-xml-client disabled="true"/>
+        <java-json-client disabled="true"/>
+        <javascript-client disabled="true"/>
+        <jaxb disabled="true"/>
+        <jaxws disabled="true" />
+        <ruby-json-client disabled="true"/>
+    </modules>
+</enunciate>

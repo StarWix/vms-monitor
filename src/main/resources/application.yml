@@ -1,0 +1,32 @@
+vm:
+  vms:
+    - id: 1
+      name: XS
+      cores: 1
+      frequency: 2700
+      ram: 1024
+    - id: 2
+      name: S
+      cores: 1
+      frequency: 2700
+      ram: 2048
+    - id: 3
+      name: M
+      cores: 2
+      frequency: 2700
+      ram: 4096
+    - id: 4
+      name: L
+      cores: 4
+      frequency: 2700
+      ram: 8192
+    - id: 5
+      name: XL
+      cores: 8
+      frequency: 2700
+      ram: 16384
+    - id: 6
+      name: XXL
+      cores: 8
+      frequency: 3500
+      ram: 16384

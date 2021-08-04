@@ -1,0 +1,135 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: VMS Monitor
+host: 'localhost:8080'
+schemes:
+  - http
+tags:
+  - name: VMController
+definitions:
+  Load:
+    type: object
+    title: Load
+    required:
+      - vmId
+      - usedMemory
+    properties:
+      vmId:
+        readOnly: false
+        description: id of VM
+        type: integer
+        format: int32
+      coreLoads:
+        readOnly: false
+        description: loading each VM core at the moment. All values are between 0 and 1.
+        type: array
+        items:
+          type: number
+      usedMemory:
+        readOnly: false
+        description: used VM memory at the moment
+        type: integer
+        format: int32
+    example:
+      vmId: 1
+      coreLoads:
+        - 0.2
+        - 0.5
+      usedMemory: 756
+    description: ''
+  VM:
+    type: object
+    title: VM
+    required:
+      - id
+      - cores
+      - frequency
+      - ram
+    properties:
+      id:
+        readOnly: false
+        description: VM id
+        type: integer
+        format: int32
+      name:
+        readOnly: false
+        description: VM name
+        type: string
+      cores:
+        readOnly: false
+        description: number of VM cpu cores
+        type: integer
+        format: int32
+      frequency:
+        readOnly: false
+        description: cpu frequency
+        type: integer
+        format: int32
+      ram:
+        readOnly: false
+        description: available ram
+        type: integer
+        format: int32
+    example:
+      id: 1
+      name: ...
+      cores: 8
+      frequency: 2700
+      ram: 2048
+    description: Virtual Machine (VM) info
+paths:
+  /api/loads:
+    get:
+      tags:
+        - VMController
+      operationId: getLoadsByIds
+      produces:
+        - application/json
+      parameters:
+        - name: vmIds
+          in: query
+          required: true
+          type: array
+          items:
+            type: integer
+          collectionFormat: multi
+          description: list of vm ids
+      responses:
+        '200':
+          schema:
+            description: list of loads for passed vm ids
+            type: array
+            items:
+              $ref: '#/definitions/Load'
+          examples:
+            application/json:
+              - vmId: 1
+                coreLoads:
+                  - 0.2
+                  - 0.5
+                usedMemory: 756
+          description: list of loads for passed vm ids
+  /api/vms:
+    get:
+      tags:
+        - VMController
+      operationId: getAllVms
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          schema:
+            description: list of available Virtual Machines
+            type: array
+            items:
+              $ref: '#/definitions/VM'
+          examples:
+            application/json:
+              - id: 1
+                name: ...
+                cores: 8
+                frequency: 2700
+                ram: 2048
+          description: list of available Virtual Machines
